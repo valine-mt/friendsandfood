@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .main-container
+    
+        .home-header
+            h1= `Hello ${username}!`
+            img(src=`${user_photo}`, alt=`Profile Photo ${username}`, class='profileImg')
+        
+        h2= "New recipes from your friends"
+        .light-red-container
+            - for (let j = 0; j < o; j++)
+                form(action='/home', method='POST')
+                    .recipe-list-wrapper
+                        button(type='submit')
+                            img(src=`${LatestFriendsRecipes[j]['recipe_photo']}`, alt=`${LatestFriendsRecipes[j]['recipe_name']}`, class='recipesImg')
+                            .recipe-list-wrapper-title
+                                h3=LatestFriendsRecipes[j]['recipe_name']
+                            .recipe-list-creator
+                                img(src=`${LatestFriendsRecipes[j]['friend_photo']}` alt=`${LatestFriendsRecipes[j]['username']} photo` class="recipeCreatorImg profilePhoto")
+                                p(class='profileName')=`${LatestFriendsRecipes[j]['friend_name']} `
+                                .recipe-list-description
+                                    p(class='profileNotes')=`"${LatestFriendsRecipes[j]['recipe_notes']}"`
+                            input(type='hidden', name='recipeID', value=`${LatestFriendsRecipes[j]['recipe_id']}`)
+
+        hr
+
+        h2= "Latest recipes you've shared"
+
+        .light-green-container
+            - for (let i = 0; i < n; i++)
+                form(action='/home', method='POST')
+                    .recipe-list-wrapper
+                        button(type='submit')
+                            img(src=`${LatestUserRecipes[i]['recipe_photo']}`, alt=`${LatestUserRecipes[i]['recipe_name']}`, class='recipesImg')
+                            .recipe-list-wrapper-title
+                                h3=LatestUserRecipes[i]['recipe_name']
+                            .recipe-list-creator
+                                img(src=`${user_photo}`, alt=`${LatestUserRecipes[i]['username']} photo` class="recipeCreatorImg profilePhoto")
+                                p(class='profileName')=`${LatestUserRecipes[i]['username']} `
+                                .recipe-list-description
+                                    p(class='profileNotes')=`"${LatestUserRecipes[i]['recipe_notes']}"`
+                            input(type='hidden', name='recipeID', value=`${LatestUserRecipes[i]['recipe_id']}`)
+            
+                  
+
+  #navbar
+    a(href="/home") Home
+    a(href="/add-friend") Add friend
+    a(href="/add-recipe") Add recipe
+    a(href="/list-friends") List friends
+    a(href="/list-recipes") List recipes
+    a(href="/logout") Logout

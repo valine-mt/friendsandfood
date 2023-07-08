@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    .main-container
+        h1= title
+
+        .friends-list-wrapper
+            - for (let i = 0; i < n; i++)
+                form(action='/list-friends', method='POST')
+                    button(type='submit')
+                        img(src=`${listFriends[i]['friend_photo']}`, alt=`${listFriends[i]['friend_name']}`, class='friendsImg')
+                    h2(style="text-align:center")=listFriends[i]['friend_name']
+                    input(type='hidden', name='friendID', value=`${listFriends[i]['friend_id']}`)
+                    
+            
+    #navbar
+        a(href="/home") Home
+        a(href="/add-friend") Add friend
+        a(href="/add-recipe") Add recipe
+        a(href="/list-friends") List friends
+        a(href="/list-recipes") List recipes
+        a(href="/logout") Logout

@@ -1,0 +1,146 @@
+extends layout
+
+block content
+    .main-container
+        h1= title
+
+        h2= "Breakfast"
+            .light-red-container
+                - for (let i = 0; i < n; i++)
+                    if userListRecipes[i]['recipe_category'] == 'breakfast'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${userListRecipes[i]['recipe_photo']}`, alt=`${userListRecipes[i]['recipe_name']}`, class='recipesImg')
+                                .recipe-list-wrapper-title
+                                    h3=userListRecipes[i]['recipe_name']
+                                .recipe-list-creator
+                                    img(src=`${userListRecipes[i]['user_photo']}` alt=`${userListRecipes[i]['username']} photo` class="recipeCreatorImg profilePhoto")
+                                    p(class='profileName')=`created by you`
+                                    .recipe-list-description
+                                        p(class='profileNotes')=`"${userListRecipes[i]['recipe_notes']}"`
+                                input(type='hidden', name='recipeID', value=`${userListRecipes[i]['recipe_id']}`)
+
+                - for (let j = 0; j < o; j++)
+                    if friendsListRecipes[j]['recipe_category'] == 'breakfast'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${friendsListRecipes[j]['recipe_photo']}`, alt=`${friendsListRecipes[j]['recipe_photo']}`, class='recipesImg')
+                                .recipe-list-wrapper-title
+                                    h3=friendsListRecipes[j]['recipe_name']
+                                .recipe-list-creator
+                                    img(src=`${friendsListRecipes[j]['friend_photo']}` alt=`${friendsListRecipes[j]['creator_name']} photo` class="recipeCreatorImg profilePhoto")
+                                    p(class='profileName')=`created by ${friendsListRecipes[ji]['creator_name']}`
+                                    .recipe-list-description
+                                        p(class='profileNotes')=`"${friendsListRecipes[j]['recipe_notes']}"`
+                                input(type='hidden', name='recipeID', value=`${friendsListRecipes[j]['recipe_id']}`)
+                                
+
+        h2= "Lunch & Dinner"
+            .light-red-container
+                - for (let i = 0; i < n; i++)
+                    if userListRecipes[i]['recipe_category'] == 'lunch-dinner'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${userListRecipes[i]['recipe_photo']}`, alt=`${userListRecipes[i]['recipe_name']}`, class='recipesImg')
+                                    .recipe-list-wrapper-title
+                                        h3=userListRecipes[i]['recipe_name']
+                                    .recipe-list-creator
+                                        img(src=`${userListRecipes[i]['user_photo']}` alt=`${userListRecipes[i]['username']} photo` class="recipeCreatorImg profilePhoto")
+                                        p(class='profileName')=`created by you`
+                                        .recipe-list-description
+                                            p(class='profileNotes')=`"${userListRecipes[i]['recipe_notes']}"`
+                                    input(type='hidden', name='recipeID', value=`${userListRecipes[i]['recipe_id']}`)
+
+                - for (let j = 0; j < o; j++)
+                    if friendsListRecipes[j]['recipe_category'] == 'lunch-dinner'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${friendsListRecipes[j]['recipe_photo']}`, alt=`${friendsListRecipes[j]['recipe_photo']}`, class='recipesImg')
+                                    .recipe-list-wrapper-title
+                                        h3=friendsListRecipes[j]['recipe_name']
+                                    .recipe-list-creator
+                                        img(src=`${friendsListRecipes[j]['friend_photo']}` alt=`${friendsListRecipes[j]['creator_name']} photo` class="recipeCreatorImg profilePhoto")
+                                        p(class='profileName')=`created by ${friendsListRecipes[j]['creator_name']}`
+                                        .recipe-list-description
+                                            p(class='profileNotes')=`"${friendsListRecipes[j]['recipe_notes']}"`
+                                    input(type='hidden', name='recipeID', value=`${friendsListRecipes[j]['recipe_id']}`)
+                                        
+
+        h2= "Snacks"
+            .light-red-container
+                - for (let i = 0; i < n; i++)
+                    if userListRecipes[i]['recipe_category'] == 'snacks'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${userListRecipes[i]['recipe_photo']}`, alt=`${userListRecipes[i]['recipe_name']}`, class='recipesImg')
+                                    .recipe-list-wrapper-title
+                                        h3=userListRecipes[i]['recipe_name']
+                                    .recipe-list-creator
+                                        img(src=`${userListRecipes[i]['user_photo']}` alt=`${userListRecipes[i]['username']} photo` class="recipeCreatorImg profilePhoto")
+                                        p(class='profileName')=`created by you`
+                                        .recipe-list-description
+                                            p(class='profileNotes')=`"${userListRecipes[i]['recipe_notes']}"`
+                                    input(type='hidden', name='recipeID', value=`${userListRecipes[i]['recipe_id']}`)
+
+                - for (let j = 0; j < o; j++)
+                    if friendsListRecipes[j]['recipe_category'] == 'snacks'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${friendsListRecipes[j]['recipe_photo']}`, alt=`${friendsListRecipes[j]['recipe_photo']}`, class='recipesImg')
+                                    .recipe-list-wrapper-title
+                                        h3=friendsListRecipes[j]['recipe_name']
+                                    .recipe-list-creator
+                                        img(src=`${friendsListRecipes[j]['friend_photo']}` alt=`${friendsListRecipes[j]['creator_name']} photo` class="recipeCreatorImg profilePhoto")
+                                        p(class='profileName')=`created by ${friendsListRecipes[j]['creator_name']}`
+                                        .recipe-list-description
+                                            p(class='profileNotes')=`"${friendsListRecipes[j]['recipe_notes']}"`
+                                    input(type='hidden', name='recipeID', value=`${friendsListRecipes[j]['recipe_id']}`)
+                                
+
+        h2= "Drinks"
+            .light-red-container
+                - for (let i = 0; i < n; i++)
+                    if userListRecipes[i]['recipe_category'] == 'drinks'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${userListRecipes[i]['recipe_photo']}`, alt=`${userListRecipes[i]['recipe_name']}`, class='recipesImg')
+                                .recipe-list-wrapper-title
+                                    h3=userListRecipes[i]['recipe_name']
+                                .recipe-list-creator
+                                    img(src=`${userListRecipes[i]['user_photo']}` alt=`${userListRecipes[i]['username']} photo` class="recipeCreatorImg profilePhoto")
+                                    p(class='profileName')=`created by you`
+                                    .recipe-list-description
+                                        p(class='profileNotes')=`"${userListRecipes[i]['recipe_notes']}"`
+                                input(type='hidden', name='recipeID', value=`${userListRecipes[i]['recipe_id']}`)
+
+                - for (let j = 0; j < o; j++)
+                    if friendsListRecipes[j]['recipe_category'] == 'drinks'
+                        form(action='/list-recipes', method='POST')
+                            .recipe-list-wrapper
+                                button(type='submit')
+                                    img(src=`${friendsListRecipes[j]['recipe_photo']}`, alt=`${friendsListRecipes[j]['recipe_photo']}`, class='recipesImg')
+                                .recipe-list-wrapper-title
+                                    h3=friendsListRecipes[j]['recipe_name']
+                                .recipe-list-creator
+                                    img(src=`${friendsListRecipes[j]['friend_photo']}` alt=`${friendsListRecipes[j]['creator_name']} photo` class="recipeCreatorImg profilePhoto")
+                                    p(class='profileName')=`created by ${friendsListRecipes[j]['creator_name']}`
+                                    .recipe-list-description
+                                        p(class='profileNotes')=`"${friendsListRecipes[j]['recipe_notes']}"`
+                                input(type='hidden', name='recipeID', value=`${friendsListRecipes[j]['recipe_id']}`)
+
+                            
+    
+    #navbar
+        a(href="/home") Home
+        a(href="/add-friend") Add friend
+        a(href="/add-recipe") Add recipe
+        a(href="/list-friends") List friends
+        a(href="/list-recipes") List recipes
+        a(href="/logout") Logout

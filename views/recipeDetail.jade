@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  .main-container
+    h1 #{recipeDetail['recipe_name']}
+    p(style="margin-bottom: 1%")= `This recipe was created by ${recipeDetail['username']} and is best used for ${recipeDetail['recipe_category']}.`
+    .recipe-detail-grid-container
+      .recipe-detail-notes
+        .profilePhoto
+          img(src=`${recipe_creator_photo}`, alt=`${recipeDetail['username']}`, class='friendProfileImg')
+        .profileName
+          h2(style="margin-top: 20px; margin-bottom: 0;")= `${recipeDetail['username']} says:`
+        .profileNotes
+          p(style='font-family: Satisfy, sans-serif; font-size: 25px')= `"${recipeDetail['recipe_notes']}"`
+
+      .recipe-detail-img
+        img(src=`${recipeDetail['recipe_photo']}`, alt=`${recipeDetail['recipe_name']}`, class='recipeDetailImg')
+
+      .recipe-detail-ingredients
+        h2 Ingredients
+        ul
+          - for(let i = 0; i < n; i++)
+            li #{ingredientsList[i]}
+
+      .recipe-detail-directions
+        h2 Directions
+        ol
+          - for(let j = 0; j < o; j++) 
+            li #{directionsList[j]}
+    
+  #navbar
+        a(href="/home") Home
+        a(href="/add-friend") Add friend
+        a(href="/add-recipe") Add recipe
+        a(href="/list-friends") List friends
+        a(href="/list-recipes") List recipes
+        a(href="/logout") Logout

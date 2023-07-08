@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .main-container
+        h1= title
+
+        .light-red-container
+            form(id="add-friend", action="/add-friend", method="POST")
+                input(type="text", name="friendName", placeholder="Friend's name" autofocus)
+                input(type="submit", value="Add friend", class="button-submit")
+
+    #navbar
+        a(href="/home") Home
+        a(href="/add-friend") Add friend
+        a(href="/add-recipe") Add recipe
+        a(href="/list-friends") List friends
+        a(href="/list-recipes") List recipes
+        a(href="/logout") Logout

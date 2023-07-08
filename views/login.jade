@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+
+  .light-green-container
+    form(id="submit-form", action="/login", method="POST")
+      input(name="loginUsername", type="text", placeholder="Enter username", autofocus)
+      input(name="loginPassword", type="password", placeholder="Enter password")
+      input(type="submit", value="Login", class="button-submit")

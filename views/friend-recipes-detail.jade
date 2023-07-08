@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  .main-container
+    h1=`Here are all the recipes created by your friend ${friendRecipesDetail[0]['username']}!`
+
+    .light-red-container
+      - for(let i = 0; i < n; i++)
+          form(action='/friend-recipes-detail', method='POST')
+            .recipe-list-wrapper
+              button(type='submit')
+                img(src=`${friendRecipesDetail[i]['recipe_photo']}`, alt=`${friendRecipesDetail[i]['recipe_name']}`, class='recipesImg')
+              .recipe-list-wrapper-title
+                h3=`${friendRecipesDetail[i]['recipe_name']}`
+                .recipe-list-creator
+                    img(src=`${friendRecipesDetail[i]['creator_photo']}`, alt=`${friendRecipesDetail[i]['username']} photo` class="recipeCreatorImg profilePhoto")
+                    p(class='profileName')=`${friendRecipesDetail[0]['username']} `
+                    .recipe-list-description
+                        p(class='profileNotes')=`"${friendRecipesDetail[[i]]['recipe_notes']}"`
+              input(type='hidden', name='recipeID', value=`${friendRecipesDetail[i]['recipe_id']}`)
+                
+
+  #navbar
+        a(href="/home") Home
+        a(href="/add-friend") Add friend
+        a(href="/add-recipe") Add recipe
+        a(href="/list-friends") List friends
+        a(href="/list-recipes") List recipes
+        a(href="/logout") Logout

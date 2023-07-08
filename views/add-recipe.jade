@@ -1,0 +1,60 @@
+extends layout
+
+block content
+    .main-container
+        h1= title
+        form(id="add-recipe", action="/add-recipe", method="POST", enctype="multipart/form-data")
+            label(for='recipeName') Recipe Name
+            .light-red-container
+                input(name="recipeName", type="text", placeholder="Recipe Name" autofocus)
+
+            label(for='recipeCategory') Recipe Category
+            br
+            .light-green-container
+                select(name="recipeCategory", id="recipe-category")
+                    option(value="") Select a category
+                    option(value="breakfast") Breakfast
+                    option(value="lunch-dinner") Lunch Dinner
+                    option(value="snacks") Snacks
+                    option(value="drinks") Drinks
+            label(for='recipePhoto') Recipe Photo
+            .light-red-container
+                input(name="recipePhoto", class="form-control-file browse", type="file", value="Photo")
+            label(for='ingredients_1') Ingredients
+            .light-green-container
+                input(name="ingredient_1", type="text", placeholder="Ingredient 1")
+                input(name="ingredient_2", type="text", placeholder="Ingredient 2")
+                input(name="ingredient_3", type="text", placeholder="Ingredient 3")
+                input(name="ingredient_4", type="text", placeholder="Ingredient 4")
+                input(name="ingredient_5", type="text", placeholder="Ingredient 5")
+                input(name="ingredient_6", type="text", placeholder="Ingredient 6")
+                input(name="ingredient_7", type="text", placeholder="Ingredient 7")
+                input(name="ingredient_8", type="text", placeholder="Ingredient 8")
+                input(name="ingredient_9", type="text", placeholder="Ingredient 9")
+                input(name="ingredient_10", type="text", placeholder="Ingredient 10")
+
+            label(for='step_1') Directions
+            .light-red-container
+                input(name="step_1", type="text", placeholder="Step 1")
+                input(name="step_2", type="text", placeholder="Step 2")
+                input(name="step_3", type="text", placeholder="Step 3")
+                input(name="step_4", type="text", placeholder="Step 4")
+                input(name="step_5", type="text", placeholder="Step 5")
+                input(name="step_6", type="text", placeholder="Step 6")
+                input(name="step_7", type="text", placeholder="Step 7")
+                input(name="step_8", type="text", placeholder="Step 8")
+                input(name="step_9", type="text", placeholder="Step 9")
+                input(name="step_10", type="text", placeholder="Step 10")
+
+            label(for='recipeNotes') Recipe description or additonal notes
+            .light-green-container
+                input(name="recipeNotes", type="text", placeholder="Describe this recipe (130 characters max)" maxlength="130") 
+                input(type="submit", value="Add recipe", class="button-submit")
+
+    #navbar
+        a(href="/home") Home
+        a(href="/add-friend") Add friend
+        a(href="/add-recipe") Add recipe
+        a(href="/list-friends") List friends
+        a(href="/list-recipes") List recipes
+        a(href="/logout") Logout
