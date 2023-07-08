@@ -200,6 +200,7 @@ a{
 
 .profileNotes{
   grid-area: profileNotes;
+  overflow-wrap: break-word;
   margin-right: 20px;
   margin-bottom: 20px;
 }
