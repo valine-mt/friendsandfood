@@ -264,10 +264,17 @@ indexRouter.post('/list-friends', function(req,res,next){
   const friendID = req.body.friendID;
   const friendRecipesDetail = getFriendRecipesDetail.getFriendRecipesDetail('./db/recipes.csv', friendID);
   const n = friendRecipesDetail.length;
-  res.render('friend-recipes-detail',{
-    n: n,
-    friendRecipesDetail: friendRecipesDetail
-  });
+  if(friendRecipesDetail.length>0){
+    res.render('friend-recipes-detail',{
+      n: n,
+      friendRecipesDetail: friendRecipesDetail
+    });
+  }
+  else{
+    res.render('noRecipe', {
+      title: 'There is currently no recipes registered in the DB. Add a Recipe.',
+    });
+  }
 })
 // Detail of friend's recipe (when click on it)
 indexRouter.post('/friend-recipes-detail', function(req,res,next){
