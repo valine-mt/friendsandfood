@@ -17,7 +17,7 @@ Built with
 
 Installation
 -----------------
-1. Prerequisite - To use this app, you'll need the following
+1. Prerequisite - To use this app, you'll need the following (npm install in folder to get node_modules)
    1. Node JS installed
    2. Express JS installed
    3. Multer JS installed (Node middleware for handling file uploads)
