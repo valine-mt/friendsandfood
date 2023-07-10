@@ -18,7 +18,7 @@ block content
                                 h3=LatestFriendsRecipes[j]['recipe_name']
                             .recipe-list-creator
                                 img(src=`${LatestFriendsRecipes[j]['friend_photo']}` alt=`${LatestFriendsRecipes[j]['username']} photo` class="recipeCreatorImg profilePhoto")
-                                p(class='profileName')=`${LatestFriendsRecipes[j]['friend_name']} `
+                                p(class='profileName')=`created by ${LatestFriendsRecipes[j]['friend_name']}`
                                 .recipe-list-description
                                     p(class='profileNotes')=`"${LatestFriendsRecipes[j]['recipe_notes']}"`
                             input(type='hidden', name='recipeID', value=`${LatestFriendsRecipes[j]['recipe_id']}`)
@@ -37,7 +37,7 @@ block content
                                 h3=LatestUserRecipes[i]['recipe_name']
                             .recipe-list-creator
                                 img(src=`${user_photo}`, alt=`${LatestUserRecipes[i]['username']} photo` class="recipeCreatorImg profilePhoto")
-                                p(class='profileName')=`${LatestUserRecipes[i]['username']} `
+                                p(class='profileName')=`created by you`
                                 .recipe-list-description
                                     p(class='profileNotes')=`"${LatestUserRecipes[i]['recipe_notes']}"`
                             input(type='hidden', name='recipeID', value=`${LatestUserRecipes[i]['recipe_id']}`)
