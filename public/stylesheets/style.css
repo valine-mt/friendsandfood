@@ -198,6 +198,8 @@ a{
 
 .profileName{
   grid-area: profileName;
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
 }
 
 .profileNotes{
