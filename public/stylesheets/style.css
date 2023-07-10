@@ -175,6 +175,8 @@ a{
 .recipe-detail-notes{
   grid-area: recipeNotes;
   display:grid;
+  max-width: 1200px;
+  overflow-wrap: break-word;
   justify-content: left;
   row-gap: 1em;
   grid-template-areas: 
@@ -200,6 +202,8 @@ a{
 
 .profileNotes{
   grid-area: profileNotes;
+  max-width: 950px;
+  line-height: 2.5em;
   overflow-wrap: break-word;
   margin-right: 20px;
   margin-bottom: 20px;
