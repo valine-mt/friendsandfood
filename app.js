@@ -185,8 +185,6 @@ indexRouter.post('/add-recipe', upload.single('recipePhoto'), function(req,res,n
 
 
   console.log("Recipe successfully added!")
-  // Clear header cache to get new data on list-recipes page
-  res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
   res.redirect('/list-recipes');
 })
 
@@ -204,8 +202,6 @@ indexRouter.post('/add-friend', function(req,res,next){
   if (friend_id) {
     addFriend.addFriend('./db/friends.csv', `\n${user_id},${username},${friend_id},${friend_name},${friend_photo}`);
     console.log("Friend successfully added!")
-    // Clear header cache to get new data on list-friends page
-    res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0');
     res.redirect('/list-friends');
   }
   else{
