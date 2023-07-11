@@ -8,15 +8,15 @@ var getUserPhoto = require('./getUserPhoto');
 
 // Display all user's recipes
 const displayUserListRecipes = function(){
+    const listRecipesBuff =  fs.readFileSync('./db/recipes.csv');
+    const listRecipes = listRecipesBuff.toString();
+    const listRecipesArray = csvtoArray.csvtoArray(listRecipes, '\n');
+    const listRecipesJSON = arraytoJSON.arraytoJSON(listRecipesArray);
+    
+    const totalRecipes = listRecipesJSON.length;
     let userListRecipes = []
     
     for (let i = 0; i < totalRecipes; i++){
-        const listRecipesBuff =  fs.readFileSync('./db/recipes.csv');
-        const listRecipes = listRecipesBuff.toString();
-        const listRecipesArray = csvtoArray.csvtoArray(listRecipes, '\n');
-        const listRecipesJSON = arraytoJSON.arraytoJSON(listRecipesArray);
-        
-        const totalRecipes = listRecipesJSON.length;
         let recipeBuffer = {};
         if (listRecipesJSON[i]['user_id'] == getUserData.getUserData('./db/currentLog.csv')['userID']){
             recipeBuffer['creator_id'] = listRecipesJSON[i]['user_id'];
