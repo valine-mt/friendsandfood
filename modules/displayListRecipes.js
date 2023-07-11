@@ -6,18 +6,17 @@ var getFriendsData = require('./getFriendsData');
 var getUserData = require('./getUserData');
 var getUserPhoto = require('./getUserPhoto');
 
-const listRecipesBuff =  fs.readFileSync('./db/recipes.csv');
-const listRecipes = listRecipesBuff.toString();
-const listRecipesArray = csvtoArray.csvtoArray(listRecipes, '\n');
-const listRecipesJSON = arraytoJSON.arraytoJSON(listRecipesArray);
-
-const totalRecipes = listRecipesJSON.length;
-
 // Display all user's recipes
 const displayUserListRecipes = function(){
     let userListRecipes = []
     
     for (let i = 0; i < totalRecipes; i++){
+        const listRecipesBuff =  fs.readFileSync('./db/recipes.csv');
+        const listRecipes = listRecipesBuff.toString();
+        const listRecipesArray = csvtoArray.csvtoArray(listRecipes, '\n');
+        const listRecipesJSON = arraytoJSON.arraytoJSON(listRecipesArray);
+        
+        const totalRecipes = listRecipesJSON.length;
         let recipeBuffer = {};
         if (listRecipesJSON[i]['user_id'] == getUserData.getUserData('./db/currentLog.csv')['userID']){
             recipeBuffer['creator_id'] = listRecipesJSON[i]['user_id'];
@@ -37,6 +36,12 @@ const listFriends = getFriendsData.getFriendsData('./db/friends.csv','./db/curre
 const totalFriends = listFriends.length;
 
 const displayFriendsListRecipes = function(){
+    const listRecipesBuff =  fs.readFileSync('./db/recipes.csv');
+    const listRecipes = listRecipesBuff.toString();
+    const listRecipesArray = csvtoArray.csvtoArray(listRecipes, '\n');
+    const listRecipesJSON = arraytoJSON.arraytoJSON(listRecipesArray);
+    
+    const totalRecipes = listRecipesJSON.length;
     let friendsListRecipes = []
     for (let j = 0; j < totalRecipes; j++){
         for (let k = 0; k < totalFriends; k++){
