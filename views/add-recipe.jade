@@ -6,12 +6,12 @@ block content
         form(id="add-recipe", action="/add-recipe", method="POST", enctype="multipart/form-data")
             label(for='recipeName') Recipe Name
             .light-red-container
-                input(name="recipeName", type="text", placeholder="Recipe Name" autofocus)
+                input(name="recipeName", type="text", placeholder="Recipe Name" autofocus required)
 
             label(for='recipeCategory') Recipe Category
             br
             .light-green-container
-                select(name="recipeCategory", id="recipe-category")
+                select(name="recipeCategory", id="recipe-category" required)
                     option(value="") Select a category
                     option(value="breakfast") Breakfast
                     option(value="lunch-dinner") Lunch Dinner
@@ -19,7 +19,7 @@ block content
                     option(value="drinks") Drinks
             label(for='recipePhoto') Recipe Photo
             .light-red-container
-                input(name="recipePhoto", class="form-control-file browse", type="file", value="Photo")
+                input(name="recipePhoto", class="form-control-file browse", type="file", value="Photo" required)
             label(for='ingredients_1') Ingredients
             .light-green-container
                 input(name="ingredient_1", type="text", placeholder="Ingredient 1")
